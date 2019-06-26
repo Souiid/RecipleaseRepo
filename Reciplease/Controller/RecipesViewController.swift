@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Alamofire
+
 
 class RecipesViewController: UIViewController {
     
@@ -15,13 +15,16 @@ class RecipesViewController: UIViewController {
     
     @IBOutlet weak var recipesTableView: UITableView!
    
-    let recipeService = RecipeService()
+    
+    var index = 0
+    
     
     var recipes = [Match]()
     var image = UIImage()
     var recipeTableviewCell = RecipeTableViewCell()
-    var index = 0
+  
     var recipeDescription: RecipeDescriptionDecodable!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +32,7 @@ class RecipesViewController: UIViewController {
         recipesTableView.register(UINib.init(nibName: "RecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeTableViewCell")
         print(recipes)
         
-        print("CALL DESCRIPTION ++++++")
-        YummlyService().getRecipeDescription(id: "Spicy-Roasted-Chickpeas-1071199") { (success, description) in
-            print("OK")
-        }
+      
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -41,6 +41,8 @@ class RecipesViewController: UIViewController {
             if let recipeDescriptionVC = segue.destination as? RecipeDescriptionViewController {
                 guard let recipeDescription = recipeDescription else {return}
                 recipeDescriptionVC.recipeDescription = recipeDescription
+                recipeDescriptionVC.recipesIngredients = recipes[index].ingredients
+                print("INDEX : ", index)
             }
         }
     }
@@ -64,10 +66,12 @@ extension RecipesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let recipe = recipes[indexPath.row]
+        index = indexPath.row
         let id = recipe.id
         YummlyService().getRecipeDescription(id: id) { (success, recipeDescription) in
             if success {
                 self.recipeDescription = recipeDescription
+                print("DESCRIPTION : ", self.recipeDescription)
                 self.performSegue(withIdentifier: "segueToRecipeDescription", sender: self)
             }
         }
