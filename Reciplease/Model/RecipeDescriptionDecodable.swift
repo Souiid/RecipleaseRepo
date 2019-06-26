@@ -17,6 +17,7 @@ struct RecipeDescriptionDecodable: Decodable {
     let name: String
     let ingredientLines: [String]
     let rating: Int
+    let source: Source
 }
 
 
@@ -68,6 +69,17 @@ enum Plural: String, Decodable {
     case iu = "IU"
     case mcgDFE = "mcg_DFE"
     case mcgRAE = "mcg_RAE"
+}
+
+struct Source: Decodable {
+    let sourceDisplayName, sourceSiteURL: String
+    let sourceRecipeURL: String
+    
+    enum CodingKeys: String, CodingKey {
+        case sourceDisplayName
+        case sourceSiteURL = "sourceSiteUrl"
+        case sourceRecipeURL = "sourceRecipeUrl"
+    }
 }
 
 
