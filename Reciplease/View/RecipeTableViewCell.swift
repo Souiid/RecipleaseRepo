@@ -19,6 +19,7 @@ class RecipeTableViewCell: UITableViewCell {
     @IBOutlet weak var ratingLabel: UILabel!
     
     
+    
     var match: Match! {
         didSet{
             titleLabel.text = match.recipeName

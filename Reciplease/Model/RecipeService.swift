@@ -8,15 +8,10 @@
 
 import Foundation
 
-class RecipeService {
-    var arrayOfRecipes = [Match]()
-    var i = 0
-    
-    func add(recipe: Match) {
-        arrayOfRecipes.append(recipe)
 
-    }
+class RecipeService {
     
+   
     func downloadImage(with stringUrl: String, session: URLSession = URLSession.shared, callback: @escaping (Data?) -> Void) {
         guard let url = URL(string: stringUrl) else {
             callback(nil)
