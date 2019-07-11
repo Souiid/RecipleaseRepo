@@ -7,27 +7,99 @@
 //
 
 import XCTest
+@testable import Reciplease
 
 class RecipleaseTests: XCTestCase {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testGetRecipesShouldPostFailedCallback() {
+        let fakeResponse = FakeResponse(response: nil, data: nil, error: FakeResponseData.error)
+        let yummlySessionFake = YummlySessionFake(fakeResponse: fakeResponse)
+        let yummlyService = YummlyService(yummlySession: yummlySessionFake)
+        
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+        yummlyService.getRecipes(textTosearch: "lemon") { (success, matches) in
+            XCTAssertFalse(success)
+            XCTAssertNil(matches)
+            expectation.fulfill()
+            
         }
+        
+        wait(for: [expectation], timeout: 0.01)
     }
-
+    
+    func testGetRecipesShouldPostFailedCallbackIfNoData() {
+        let fakeResponse = FakeResponse(response: FakeResponseData.responseOK, data: nil, error: nil)
+        
+        let yummlySessionFake = YummlySessionFake(fakeResponse: fakeResponse)
+        let yummlyService = YummlyService(yummlySession: yummlySessionFake)
+        
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+        yummlyService.getRecipes(textTosearch: "lemon") { (success, matches) in
+            XCTAssertFalse(success)
+            XCTAssertNil(matches)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+    
+    func testGetRecipesShouldPostFailedCallbackIfIncorrectData() {
+        let fakeResponse = FakeResponse(response: FakeResponseData.responseOK, data: FakeResponseData.recipeIncorrectData, error: nil)
+        
+        let yummlySessionFake = YummlySessionFake(fakeResponse: fakeResponse)
+        let yummlyService = YummlyService(yummlySession: yummlySessionFake)
+        
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+        yummlyService.getRecipes(textTosearch: "lemon") { (success, matches) in
+            XCTAssertFalse(success)
+            XCTAssertNil(matches)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+    
+    func testGetRecipesShouldPostFailedCallbackIfIncorrectResponse() {
+        let fakeResponse = FakeResponse(response: FakeResponseData.responseKO, data: FakeResponseData.recipeCorrectData, error: nil)
+        
+        let yummlySessionFake = YummlySessionFake(fakeResponse: fakeResponse)
+        let yummlyService = YummlyService(yummlySession: yummlySessionFake)
+        
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+        yummlyService.getRecipes(textTosearch: "lemon") { (success, matches) in
+            XCTAssertFalse(success)
+            XCTAssertNil(matches)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+    
+    func testGetRecipesShouldPostFailedCallbackIfResponseCorrectAndNilData() {
+        let fakeResponse = FakeResponse(response: FakeResponseData.responseOK, data: nil, error: nil)
+        
+        let yummlySessionFake = YummlySessionFake(fakeResponse: fakeResponse)
+        let yummlyService = YummlyService(yummlySession: yummlySessionFake)
+        
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+        yummlyService.getRecipes(textTosearch: "lemon") { (success, matches) in
+            XCTAssertFalse(success)
+            XCTAssertNil(matches)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+    
+    func testGetRecipesShouldPostSuccessCallbackIfCorrectDataAndNoError() {
+        let fakeResponse = FakeResponse(response: FakeResponseData.responseOK, data: FakeResponseData.recipeCorrectData, error: nil)
+        
+        let yummlySessionFake = YummlySessionFake(fakeResponse: fakeResponse)
+        let yummlyService = YummlyService(yummlySession: yummlySessionFake)
+        
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+        yummlyService.getRecipes(textTosearch: "lemon") { (success, matches) in
+            XCTAssertTrue(success)
+            XCTAssertNotNil(matches)
+            XCTAssertEqual(matches?.first?.id, "Spicy-Roasted-Chickpeas-1071199")
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
 }
