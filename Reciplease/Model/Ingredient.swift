@@ -7,3 +7,14 @@
 //
 
 import Foundation
+import CoreData
+
+class Ingredient: NSManagedObject {
+    static func fetchAll(viewContext: NSManagedObjectContext = AppDelegate.viewContext) -> [Ingredient] {
+        let request: NSFetchRequest<Ingredient> = Ingredient.fetchRequest() 
+        guard let ingredientList = try? viewContext.fetch(request) else {return []}
+        return ingredientList
+    }
+}
+
+
