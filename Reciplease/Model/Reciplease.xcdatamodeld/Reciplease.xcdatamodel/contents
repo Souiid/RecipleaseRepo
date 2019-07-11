@@ -1,4 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18F132" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+    <entity name="Ingredient" representedClassName=".Ingredient" syncable="YES" codeGenerationType="category">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="ingredients" inverseEntity="Recipe" syncable="YES"/>
+    </entity>
+    <entity name="IngredientLine" representedClassName=".IngredientLine" syncable="YES" codeGenerationType="category">
+        <attribute name="ingredient" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="ingredientLines" inverseEntity="Recipe" syncable="YES"/>
+    </entity>
+    <entity name="Recipe" representedClassName=".Recipe" syncable="YES" codeGenerationType="category">
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="source" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="totalTime" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="ingredientLines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IngredientLine" inverseName="recipe" inverseEntity="IngredientLine" syncable="YES"/>
+        <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="recipe" inverseEntity="Ingredient" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Ingredient" positionX="5008.9375" positionY="-1820.27734375" width="128" height="73"/>
+        <element name="IngredientLine" positionX="4909.10546875" positionY="-1941.5625" width="128" height="73"/>
+        <element name="Recipe" positionX="4682.80859375" positionY="-1887.84375" width="128" height="148"/>
+    </elements>
 </model>
