@@ -1,0 +1,55 @@
+{
+    "criteria": {
+        "allowedIngredient": [
+            "curry",
+            "lemon"
+        ],
+        "q": null,
+        "excludedIngredient": null
+    },
+    "matches": [
+        {
+            "imageUrlsBySize": {
+                "90": "https://lh3.googleusercontent.com/2AZat4uFowqOWt--E7mTeoZm1JgP5McZHtXB9C41fTnQZZ0av3uSaP-MlZS5BRNLyaE52hEuRCS7Gvri50jPJA=s90-c"
+            },
+            "sourceDisplayName": "Simple Vegan Blog",
+            "ingredients": [
+                "chickpeas",
+                "lemon",
+                "paprika",
+                "garlic powder",
+                "cumin powder",
+                "curry"
+            ],
+            "id": "Spicy-Roasted-Chickpeas-1071199",
+            "smallImageUrls": [
+                "https://lh3.googleusercontent.com/n3FENSKLjAVX1oVkBP5zNV8vk7x1yiDJZ0S3yU-yArMKyMtA01ddjK2VkoHxW2lcK6GyXgJwECOdj11-w4Isvg=s90"
+            ],
+            "recipeName": "Spicy Roasted Chickpeas",
+            "totalTimeInSeconds": 2700,
+           "rating": 4
+        },
+        {
+            "imageUrlsBySize": {
+                "90": "https://lh3.googleusercontent.com/MuNhA5B-qlwE090wuLhNe0KVLb1R5ZX2Y0ff_kVL9YPzVNF5APRzCO3a0vM3e02VhVinetCcQpFayDfSoYDw=s90-c"
+            },
+            "sourceDisplayName": "Ev's Eats",
+            "ingredients": [
+                "bone in chicken thighs",
+                "lemon juice",
+                "turmeric",
+                "cumin",
+                "curry",
+                "dried oregano",
+                "garlic cloves",
+                "salt",
+                "black pepper",
+                "olive oil",
+                "onion",
+                "garlic",
+                "basmati rice",
+                "chicken broth",
+                "water"
+            ]
+    }
+}
