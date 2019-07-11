@@ -9,22 +9,38 @@
 import UIKit
 
 class FavoriteDescriptionViewController: UIViewController {
-
+    
+    var recipe = Recipe()
+    
+    @IBOutlet weak var recipeTitleLabel: UILabel!
+    
+    @IBOutlet weak var recipeIngredientLabel: UILabel!
+    
+    @IBOutlet weak var recipeImageView: UIImageView!
+    
+    @IBOutlet weak var ingredientLineTextView: UITextView!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        recipeTitleLabel.text = recipe.name
+       // recipeIngredientLabel.text
+        guard let data = recipe.image else {
+           //image par default
+            return
+        }
+        recipeImageView.image = UIImage(data: data)
+        
+        //ingredientLineTextView.text = recipe
+    }
+   
+    
+    @IBAction func deleteToFavorites() {
+        Recipe.deleteRecipe(recipe: recipe)
     }
     
+    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
