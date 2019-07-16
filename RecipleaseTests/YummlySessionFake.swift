@@ -19,6 +19,7 @@ class YummlySessionFake: YummlySession {
         super.init()
     }
     
+    
     override func request(url: URL, completionHandler: @escaping (DataResponse<Any>) -> Void) {
         let httpResponse = fakeResponse.response
         let data = fakeResponse.data

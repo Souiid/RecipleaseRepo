@@ -1,7 +1,6 @@
 {
     "criteria": {
         "allowedIngredient": [
-            "curry",
             "lemon"
         ],
         "q": null,
@@ -10,46 +9,334 @@
     "matches": [
         {
             "imageUrlsBySize": {
-                "90": "https://lh3.googleusercontent.com/2AZat4uFowqOWt--E7mTeoZm1JgP5McZHtXB9C41fTnQZZ0av3uSaP-MlZS5BRNLyaE52hEuRCS7Gvri50jPJA=s90-c"
+                "90": "https://lh3.googleusercontent.com/OSSccf6W-eTiTSkpfezOqq-uQrrf78SUxCH7XyY711J7aWL4WEopgBAK87jWQ4z3frr34q_gBVVVIcL8DfGMbg=s90-c"
             },
-            "sourceDisplayName": "Simple Vegan Blog",
+            "sourceDisplayName": "HungryNG",
             "ingredients": [
-                "chickpeas",
+                "grapefruit",
+                "ginger",
                 "lemon",
-                "paprika",
-                "garlic powder",
-                "cumin powder",
-                "curry"
+                "lime",
+                "cucumber",
+                "cold water"
             ],
-            "id": "Spicy-Roasted-Chickpeas-1071199",
+            "id": "Flat-Belly-_-Weight-Loss-Detox-Water-2658056",
             "smallImageUrls": [
-                "https://lh3.googleusercontent.com/n3FENSKLjAVX1oVkBP5zNV8vk7x1yiDJZ0S3yU-yArMKyMtA01ddjK2VkoHxW2lcK6GyXgJwECOdj11-w4Isvg=s90"
+                "https://lh3.googleusercontent.com/3yDQs84i6HLpZdCGKnVmeUkB9-ACMNC3_xxrwQZrl8ZycPCJ34vlTJKxxs3M45LB5nBXJMPfKEccOz_9AFz7Rg=s90"
             ],
-            "recipeName": "Spicy Roasted Chickpeas",
-            "totalTimeInSeconds": 2700,
-           "rating": 4
+            "recipeName": "Flat Belly & Weight Loss Detox Water",
+            "totalTimeInSeconds": 1500,
+            "attributes": {},
+            "flavors": {
+                "bitter": 1,
+                "meaty": 1,
+                "piquant": 0,
+                "salty": 0,
+                "sour": 1,
+                "sweet": 1
+            },
+            "rating": 4
         },
         {
             "imageUrlsBySize": {
-                "90": "https://lh3.googleusercontent.com/MuNhA5B-qlwE090wuLhNe0KVLb1R5ZX2Y0ff_kVL9YPzVNF5APRzCO3a0vM3e02VhVinetCcQpFayDfSoYDw=s90-c"
+                "90": "https://lh3.googleusercontent.com/YF8GKlcyj6j8_tY9_MDi6m_jxxuNYq3tuXDbYLN-eyUWLEmpLzcfcFBp7Ln34HxLJcTqH-KdGwHUAdBO0CLd=s90-c"
             },
-            "sourceDisplayName": "Ev's Eats",
+            "sourceDisplayName": "FitLife.tv",
             "ingredients": [
-                "bone in chicken thighs",
+                "cucumbers",
+                "celery",
+                "kale",
+                "lemon",
+                "apple",
+                "ginger"
+            ],
+            "id": "Maximum-Weight-Loss-Juice-2730513",
+            "smallImageUrls": [
+                "https://lh3.googleusercontent.com/zVjV4lIBDWwpYQm6cz3f5sEArPb6eOcP2EEnqVwM1SgemDv7gphg7unYjE_0QbwXaPGL6xgSJckQY4mYK1ylEMM=s90"
+            ],
+            "recipeName": "Maximum Weight Loss Juice",
+            "totalTimeInSeconds": 900,
+            "attributes": {
+                "course": [
+                    "Beverages"
+                ]
+            },
+            "flavors": null,
+            "rating": 3
+        },
+        {
+            "imageUrlsBySize": {
+                "90": "https://lh3.googleusercontent.com/7gZjzE7i27IVZerAMvffZw4lZcMAzk3k2DT4vphe5Z2pf3-atWhBc14T74uw6J693yjknPp7W_VXmryV1dSihQ=s90-c"
+            },
+            "sourceDisplayName": "Rants From My Crazy Kitchen",
+            "ingredients": [
+                "avocados",
+                "cooked shrimp",
+                "cooked crab",
+                "cheddar",
+                "vidalia onion",
+                "eggs",
+                "fresh parsley",
                 "lemon juice",
-                "turmeric",
-                "cumin",
-                "curry",
-                "dried oregano",
-                "garlic cloves",
-                "salt",
-                "black pepper",
+                "seafood seasoning"
+            ],
+            "id": "Baked-Seafood-Stuffed-Avocados-2720356",
+            "smallImageUrls": [
+                "https://lh3.googleusercontent.com/qgb7rsuDXlqML_NaXsI-xz_EJzRfhQNpf7fc8b7h-w4KAwPZ4xFCDTsbGi6o9k6CF9V2MOco_g4T69LwupqdTAI=s90"
+            ],
+            "recipeName": "Baked Seafood Stuffed Avocados",
+            "totalTimeInSeconds": 2100,
+            "attributes": {},
+            "flavors": {
+                "bitter": 0.8333333333333334,
+                "meaty": 0.6666666666666666,
+                "piquant": 0,
+                "salty": 0.16666666666666666,
+                "sour": 0.6666666666666666,
+                "sweet": 0.16666666666666666
+            },
+            "rating": 4
+        },
+        {
+            "imageUrlsBySize": {
+                "90": "https://lh3.googleusercontent.com/lZePtEa3lwMgTsKWFwHKEYx38DqfWBO1Sd7SjbfPrAOhaKauClyVbN0rGEM3PvBTwdyxygiEIRvDU45-lnabidQ=s90-c"
+            },
+            "sourceDisplayName": "Going My Wayz",
+            "ingredients": [
+                "lemon",
                 "olive oil",
-                "onion",
+                "skinless, boneless chicken breast halves",
                 "garlic",
-                "basmati rice",
-                "chicken broth",
-                "water"
-            ]
+                "unsalted chicken stock",
+                "cream of celery soup",
+                "baby spinach"
+            ],
+            "id": "Lemon-Chicken-Scallopini-With-Spinach-2594925",
+            "smallImageUrls": [
+                "https://lh3.googleusercontent.com/ZcOm5mZVh71HUnEk84bqyCztpZyAptVjMzR_bQo7Sa6En8Sd_dDQ5OKJT2TEgUrWUuA6QU7KUkWiJ8X2ukZa=s90"
+            ],
+            "recipeName": "Lemon Chicken Scallopini With Spinach",
+            "totalTimeInSeconds": 1500,
+            "attributes": {
+                "course": [
+                    "Main Dishes"
+                ]
+            },
+            "flavors": {
+                "bitter": 0.16666666666666666,
+                "meaty": 0.16666666666666666,
+                "piquant": 0,
+                "salty": 0.5,
+                "sour": 0.8333333333333334,
+                "sweet": 0.16666666666666666
+            },
+            "rating": 4
+        },
+        {
+            "imageUrlsBySize": {
+                "90": "https://lh3.googleusercontent.com/h9mn6Njdxmv-VPi0SfwBJK5eJ7yTsYN2bv_MWk3cfl4RXjP1qjcHN9cGFNGAbxNca2v5gY4f6YRn8nysr5OvSw=s90-c"
+            },
+            "sourceDisplayName": "Averie Cooks",
+            "ingredients": [
+                "skin on salmon fillet",
+                "lemon",
+                "unsalted butter",
+                "lemon juice",
+                "honey",
+                "garlic",
+                "kosher salt",
+                "freshly ground black pepper",
+                "finely chopped fresh parsley"
+            ],
+            "id": "Sheet-Pan-Garlic-Lemon-Butter-Salmon-2571801",
+            "smallImageUrls": [
+                "https://lh3.googleusercontent.com/gLuJ3OTxYrvzaz6zIa1rxAabXE2rSR9IALhAcDkZ3kKVLTKwbO07LdqRDGngx-pddxcX9-U08CJ7jAH4Agr0aDs=s90"
+            ],
+            "recipeName": "Sheet Pan Garlic Lemon Butter Salmon",
+            "totalTimeInSeconds": 300,
+            "attributes": {
+                "course": [
+                    "Main Dishes"
+                ]
+            },
+            "flavors": {
+                "bitter": 0.16666666666666666,
+                "meaty": 0.8333333333333334,
+                "piquant": 0,
+                "salty": 0.5,
+                "sour": 0.6666666666666666,
+                "sweet": 0.3333333333333333
+            },
+            "rating": 4
+        },
+        {
+            "imageUrlsBySize": {
+                "90": "https://lh3.googleusercontent.com/0OKgSrB0QbhpFb0bnXplAcik_5CGN9f1kl-m0JUJw_PqwbO4nWaIrhWYnjhLLi-qqHt622rR2dm-gnBQuXtzzU4=s90-c"
+            },
+            "sourceDisplayName": "Lemons for Lulu",
+            "ingredients": [
+                "ice",
+                "lemon",
+                "limes",
+                "Orange",
+                "club soda",
+                "liquid sweetener"
+            ],
+            "id": "Lemon-Lime-Virgin-Margarita-1643123",
+            "smallImageUrls": [
+                "https://lh3.googleusercontent.com/aIOyIoANxLksDHz-2vQDNbuhri8sT_BhUiGuFWJUQT_HJbkC83aqwsc_Yqv3O0JR3PJbfSYcjakpmH1EgDI2Dg4=s90"
+            ],
+            "recipeName": "Lemon Lime Virgin Margarita",
+            "totalTimeInSeconds": 600,
+            "attributes": {
+                "course": [
+                    "Beverages"
+                ]
+            },
+            "flavors": null,
+            "rating": 4
+        },
+        {
+            "imageUrlsBySize": {
+                "90": "https://lh3.googleusercontent.com/7pv3yIZv11jnDqOylExVjlb88otBpZJyJGbZoBPhdp1JUeJGJY06rL-6LADTPJz67I0tNOBgzKqTDJKGXtyy-xM=s90-c"
+            },
+            "sourceDisplayName": "Instructables",
+            "ingredients": [
+                "lemon",
+                "Activated charcoal",
+                "stevia",
+                "water",
+                "ice"
+            ],
+            "id": "Black-Lemonade-2234069",
+            "smallImageUrls": [
+                "https://lh3.googleusercontent.com/2DRlr537LefO6Om_o3TZfrHU5KZzmdP-Vwzt5yvGVXdXPQ54IhO8tSVkn4x8DDtTSWjtjy0A5pyA_5Y1ObBX5A=s90"
+            ],
+            "recipeName": "Black Lemonade",
+            "totalTimeInSeconds": 600,
+            "attributes": {
+                "course": [
+                    "Beverages"
+                ]
+            },
+            "flavors": null,
+            "rating": 3
+        },
+        {
+            "imageUrlsBySize": {
+                "90": "https://lh3.googleusercontent.com/YCWOk8beAyhYmFFjdn1f2rlYZVOopssjM0AhwAQzN14fXsq2QlzmhvkttwGQ17IGUQORyjuTD_nsSfO8Zur4xA=s90-c"
+            },
+            "sourceDisplayName": "Simply Whisked",
+            "ingredients": [
+                "salmon fillets",
+                "light sour cream",
+                "mayonnaise",
+                "garlic",
+                "minced onion",
+                "lemon juice",
+                "prepared horseradish",
+                "fresh dill",
+                "salt",
+                "pepper"
+            ],
+            "id": "Salmon-With-Creamy-Garlic-Dill-Sauce-2443199",
+            "smallImageUrls": [
+                "https://lh3.googleusercontent.com/afQbiDZ20yClVDcbLwYKEtyAZNr2KeUMlEeyclW9ug1NhCIK7Y3O7uf2yxF3Xi3wfhYVFh3Q9Rj_qnFW1f7S=s90"
+            ],
+            "recipeName": "Salmon With Creamy Garlic Dill Sauce",
+            "totalTimeInSeconds": 2400,
+            "attributes": {
+                "course": [
+                    "Main Dishes"
+                ]
+            },
+            "flavors": {
+                "bitter": 1,
+                "meaty": 1,
+                "piquant": 1,
+                "salty": 1,
+                "sour": 1,
+                "sweet": 1
+            },
+            "rating": 4
+        },
+        {
+            "imageUrlsBySize": {
+                "90": "https://lh3.googleusercontent.com/xKHCwVrgzUK2Bgu38mSyXEPAmanDTYEqqnfYbWBKZ3MhMmBKgP_Vo69WXH39cS9oiIDSLAPdqvci8NWTGdyy5w=s90-c"
+            },
+            "sourceDisplayName": "emmafrancisisathome.blogspot.com",
+            "ingredients": [
+                "chick peas",
+                "chopped onion",
+                "minced garlic",
+                "dried parsley",
+                "lemon",
+                "cumin"
+            ],
+            "id": "Falafal-2236573",
+            "smallImageUrls": [
+                "https://lh3.googleusercontent.com/LXZt1uYHaU0-1c19I6dtgcbTHgrbQSAlmRSDswhdVFEwLH4XxuVcOt5QqgxrEJUvyavV2HD-jXWvi6iFwyYOoQ=s90"
+            ],
+            "recipeName": "Falafal",
+            "totalTimeInSeconds": 2100,
+            "attributes": {},
+            "flavors": {
+                "bitter": 0.6666666666666666,
+                "meaty": 0.16666666666666666,
+                "piquant": 0,
+                "salty": 0.5,
+                "sour": 0.6666666666666666,
+                "sweet": 0.16666666666666666
+            },
+            "rating": 4
+        },
+        {
+            "imageUrlsBySize": {
+                "90": "https://lh3.googleusercontent.com/1sRneVeIt7c64tCetDy6xDhrX0rlf1HFstIjOO6MAkMOB_yr9TPzqGNUPKHO2onV9XVGYkN7dDKi3V8qsivzuw=s90-c"
+            },
+            "sourceDisplayName": "I Save A2Z",
+            "ingredients": [
+                "white sugar",
+                "water",
+                "blackberries",
+                "cold water",
+                "fresh lemon juice",
+                "ice cubes"
+            ],
+            "id": "Homemade-Blue-Lemonade-2536078",
+            "smallImageUrls": [
+                "https://lh3.googleusercontent.com/XpRHgw4VTJT09upEdPYtfAD1_XzsomTfybaGWseSyxmzBSAYzCEsonJi5Wm6HK_H8cZIJkzjOt0fFdjNyICPbz8=s90"
+            ],
+            "recipeName": "Homemade Blue Lemonade",
+            "totalTimeInSeconds": 300,
+            "attributes": {
+                "course": [
+                    "Beverages"
+                ],
+                "cuisine": [
+                    "Kid-Friendly"
+                ],
+                "holiday": [
+                    "Summer"
+                ]
+            },
+            "flavors": {
+                "bitter": 0,
+                "meaty": 0,
+                "piquant": 0,
+                "salty": 0,
+                "sour": 0.16666666666666666,
+                "sweet": 0.3333333333333333
+            },
+            "rating": 4
+        }
+    ],
+    "facetCounts": {},
+    "totalMatchCount": 212162,
+    "attribution": {
+        "html": "Recipe search powered by <a href='http://www.yummly.com/recipes'><img alt='Yummly' src='https://static.yummly.com/api-logo.png'/></a>",
+        "url": "http://www.yummly.com/recipes/",
+        "text": "Recipe search powered by Yummly",
+        "logo": "https://static.yummly.com/api-logo.png"
     }
 }

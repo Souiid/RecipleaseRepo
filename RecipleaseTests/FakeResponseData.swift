@@ -16,6 +16,12 @@ class FakeResponseData {
         return try! Data(contentsOf: url)
     }
     
+    static var recipeDescriptionCorrectData: Data? {
+        let bundle = Bundle(for: FakeResponseData.self)
+        let url = bundle.url(forResource: "Description", withExtension: "json")!
+        return try! Data(contentsOf: url)
+    }
+    
     static let recipeIncorrectData = "erreur".data(using: .utf8)!
     
     static let responseOK = HTTPURLResponse(
