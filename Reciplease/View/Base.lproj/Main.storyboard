@@ -32,7 +32,7 @@
         <scene sceneID="E8H-wG-TIP">
             <objects>
                 <navigationController id="hTU-qq-XYa" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Search" id="E8j-Yh-ycL"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="search" id="E8j-Yh-ycL"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bFH-As-mMF">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -49,7 +49,7 @@
         <scene sceneID="VjH-tb-yWZ">
             <objects>
                 <navigationController id="XqI-fa-kLU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorites" id="E8D-Hn-Y45"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="star" id="E8D-Hn-Y45"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dII-ZQ-BbB">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -164,7 +164,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yPU-VX-L9J">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yPU-VX-L9J">
                                 <rect key="frame" x="0.0" y="194.5" width="414" height="501.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexColor" red="0.053550243380000001" green="0.085756577550000004" blue="0.16595563290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -173,11 +173,11 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="exf-xm-Bq3" id="wh4-uI-3ab">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PgS-ma-nRE">
-                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -244,7 +244,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Agr-nw-8qh"/>
+                    <navigationItem key="navigationItem" id="Agr-nw-8qh">
+                        <barButtonItem key="rightBarButtonItem" title="Delete All" id="moY-y6-UzX">
+                            <connections>
+                                <action selector="deleteAll" destination="BYZ-38-t0r" id="ZS6-7F-KOX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="foodTableView" destination="yPU-VX-L9J" id="dnS-HY-LrD"/>
                         <outlet property="inputFoodTextField" destination="Of4-Oh-t4Q" id="w0u-G9-0ut"/>
@@ -255,7 +261,7 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="112.5"/>
         </scene>
-        <!--Recipes View Controller-->
+        <!--Recipes List-->
         <scene sceneID="2Rg-5f-VvM">
             <objects>
                 <viewController id="2ta-uH-XT3" customClass="RecipesViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
@@ -281,6 +287,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="v1D-Ja-GnL"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Recipes List" id="ekc-s1-YXb" userLabel="Recipes List"/>
                     <connections>
                         <outlet property="recipesTableView" destination="EpJ-jl-qZC" id="Put-4c-2p0"/>
                         <segue destination="K7W-aR-Ekb" kind="show" identifier="segueToRecipeDescription" id="50y-fq-lBA"/>
@@ -290,7 +297,7 @@
             </objects>
             <point key="canvasLocation" x="1153.6231884057972" y="112.5"/>
         </scene>
-        <!--Recipe Description View Controller-->
+        <!--Description-->
         <scene sceneID="b1V-fW-cgZ">
             <objects>
                 <viewController id="K7W-aR-Ekb" customClass="RecipeDescriptionViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
@@ -299,14 +306,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEE-w1-xhu">
-                                <rect key="frame" x="87" y="98" width="240" height="52"/>
+                                <rect key="frame" x="186" y="98" width="42" height="20.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b82-v5-qdT">
-                                <rect key="frame" x="34" y="158" width="360" height="41"/>
+                                <rect key="frame" x="27" y="146" width="360" height="20.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -316,14 +323,6 @@
                                 <rect key="frame" x="27" y="229" width="360" height="360"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gsY-LL-s1P">
-                                <rect key="frame" x="348" y="98" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="sdb-NN-GcU" kind="unwind" unwindAction="unwindToFoodListWithSegue:" id="LTk-ag-Y9S"/>
-                                </connections>
-                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8hY-Eb-Z7P">
                                 <rect key="frame" x="87" y="597" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -341,18 +340,44 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bam-be-PHz">
-                                <rect key="frame" x="339" y="181" width="44" height="40"/>
+                                <rect key="frame" x="337" y="196" width="50" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="yellowContourStar"/>
+                                <state key="normal" image="yellowContourStar">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="addToFavorite" destination="K7W-aR-Ekb" eventType="touchUpInside" id="upf-YM-Riq"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWh-Cp-MFf">
+                                <rect key="frame" x="285" y="200" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HjO-rD-kO2">
+                                <rect key="frame" x="46" y="200" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="mO7-Bx-IKU"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Description" id="DeE-YJ-nFp">
+                        <barButtonItem key="rightBarButtonItem" title="X" id="3YO-QW-8hh">
+                            <connections>
+                                <segue destination="sdb-NN-GcU" kind="unwind" unwindAction="unwindToFoodListWithSegue:" id="cW9-N9-Plp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="durationLabel" destination="HjO-rD-kO2" id="rKf-5i-hvo"/>
+                        <outlet property="favoriteButton" destination="bam-be-PHz" id="K12-Kg-khb"/>
+                        <outlet property="rateLabel" destination="rWh-Cp-MFf" id="MiG-GU-L6W"/>
                         <outlet property="recipeDetailTextView" destination="8hY-Eb-Z7P" id="pTP-bK-3L0"/>
                         <outlet property="recipeImage" destination="4eA-4w-unl" id="vt6-Go-fuP"/>
                         <outlet property="recipeIngredientsLabel" destination="b82-v5-qdT" id="zhO-S0-71w"/>
@@ -366,6 +391,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="search" width="25" height="25"/>
+        <image name="star" width="25" height="25"/>
         <image name="yellowContourStar" width="25" height="25"/>
     </resources>
 </document>
