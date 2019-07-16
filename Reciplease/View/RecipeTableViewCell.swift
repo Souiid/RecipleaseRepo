@@ -26,18 +26,36 @@ class RecipeTableViewCell: UITableViewCell {
             descriptionLabel.text = match.ingredients.joined(separator: ", ")
             let duration = match.totalTimeInSeconds / 60
             durationLabel.text = "Duration : " + String(duration) + " min"
-            ratingLabel.text = String(match.rating)
+            ratingLabel.text = "Rate: " + String(match.rating) + " / 5"
             
             if let stringUrl = match.smallImageUrls?[0] {
-                RecipeService().downloadImage(with: stringUrl) { (data) in
-                    guard let data = data else {return}
-                    self.recipeImageView.image = UIImage(data: data)
-                }
-                
+                guard let data = stringUrl.data else {return}
+                recipeImageView.image = UIImage(data: data)
             }else{
-               // recipeImageView.image = 
+               recipeImageView.image = UIImage(named: "defaultImage")
                 
             }
+        }
+    }
+    
+    var recipe: Recipe! {
+        didSet{
+            titleLabel.text = recipe.name
+            let ingredientEntities = recipe.ingredients?.allObjects as? [Ingredient]
+            let ingredients = ingredientEntities?.map({$0.name ?? ""}).joined(separator: ", ") ?? ""
+            descriptionLabel.text = ingredients
+           
+            guard let totalTime = recipe.totalTime else {return}
+            guard let totaltimeInt = Int(totalTime) else {return}
+            guard let rate = recipe.rate else {return}
+            
+            
+            durationLabel.text = "Duration : " + String(totaltimeInt / 60) + " min"
+            ratingLabel.text = "Rate : " + rate
+            guard let image = recipe.image else {
+                recipeImageView.image = UIImage(named: "defaultImage")
+                return}
+            recipeImageView.image = UIImage(data: image)
         }
     }
 }
