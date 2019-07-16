@@ -13,6 +13,9 @@ class FoodService {
     
     func add(food: Food) {
         foodArray.append(food)
-        print(foodArray[0])
+    }
+    
+    func deleteAll() {
+        foodArray.removeAll()
     }
 }
