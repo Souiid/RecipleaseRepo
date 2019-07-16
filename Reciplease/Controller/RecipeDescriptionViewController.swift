@@ -13,9 +13,9 @@ class RecipeDescriptionViewController: UIViewController {
     
     var recipeDescription: RecipeDescriptionDecodable!
   
-    var recipeService: RecipeService!
+   
     var recipe: Match!
-    let recipeToSave = Recipe(context: AppDelegate.viewContext)
+  
 
    
     @IBOutlet weak var recipeTitleLabel: UILabel!
@@ -24,25 +24,32 @@ class RecipeDescriptionViewController: UIViewController {
     @IBOutlet weak var recipeIngredientsLabel: UILabel!
     @IBOutlet weak var recipeImage: UIImageView!
     
+    @IBOutlet weak var favoriteButton: UIButton!
+    
+    @IBOutlet weak var rateLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         recipeTitleLabel.text = recipeDescription.name
         recipeIngredientsLabel.text = recipe.ingredients.joined(separator: ", ")
         recipeDetailTextView.text = recipeDescription.ingredientLines.joined(separator: "\n")
+        rateLabel.text = "Rate : " + String(recipe.rating) + " / 5"
+        durationLabel.text = "Duration : " + String(recipe.totalTimeInSeconds / 60) + " min"
         let stringURL = recipeDescription.images[0].hostedLargeURL
-      
-        RecipeService().downloadImage(with: stringURL) { (data) in
-            guard let data = data else {return}
-            self.recipeImage.image = UIImage(data: data)
-            self.recipeToSave.image = data
-         
+        guard let data = stringURL.data else {
+            recipeImage.image = UIImage(named: "defaultImage")
+            return}
+        recipeImage.image = UIImage(data: data)
+      }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if Recipe.isRegistered(name: recipe.recipeName) {
+            favoriteButton.setImage(UIImage(named: "yellowStar"), for: .normal)
+        }else {
+            favoriteButton.setImage(UIImage(named: "yellowContourStar"), for: .normal)
         }
         
     }
@@ -53,20 +60,27 @@ class RecipeDescriptionViewController: UIViewController {
     }
     
     @IBAction func addToFavorite() {
-        //let recipeToSave = Recipe(context: AppDelegate.viewContext)
-       
+        let recipeToSave = Recipe(context: AppDelegate.viewContext)
+        favoriteButton.setImage(UIImage(named: "yellowStar"), for: .normal)
         recipeToSave.name = self.recipe.recipeName
         recipeToSave.rate = String(self.recipe.rating)
         recipeToSave.totalTime = String(self.recipe.totalTimeInSeconds)
-        
-        for ingredient in self.recipe.ingredients {
+        let stringURL = recipeDescription.images[0].hostedLargeURL
+        recipeToSave.image = stringURL.data
+        for ingredient in recipe.ingredients {
             let ingredientEntity = Ingredient(context: AppDelegate.viewContext)
             ingredientEntity.name = ingredient
             ingredientEntity.recipe = recipeToSave
         }
         
-        try? AppDelegate.viewContext.save()
+        for ingredientLine in recipeDescription.ingredientLines {
+            let ingredientLineEntity = IngredientLine(context: AppDelegate.viewContext)
+            ingredientLineEntity.ingredient = ingredientLine
+            ingredientLineEntity.recipe = recipeToSave
+        }
         
+        try? AppDelegate.viewContext.save()
+        print(Recipe.fetchAll())
     }
     
   func getRecipeDetailsOnSafari(with stringUrl: String) {
