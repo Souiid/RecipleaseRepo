@@ -32,7 +32,14 @@ class FoodViewController: UIViewController {
         food.name = foodName
         foodService.add(food: food)
         foodTableView.reloadData()
+        inputFoodTextField.text = ""
     }
+    
+    @IBAction func deleteAll() {
+        foodService.deleteAll()
+        foodTableView.reloadData()
+    }
+    
     
     @IBAction func showRecipes() {
   
@@ -42,13 +49,16 @@ class FoodViewController: UIViewController {
         
         let textTosearch = foodNameArray.joined(separator: "&allowedIngredient%5B%5D=")
         
-        yummlyService.getRecipes(textTosearch: textTosearch) { (sucess, recipes) in
-            if sucess {
+        yummlyService.getRecipes(textTosearch: textTosearch) { (success, recipes) in
+           
+            if success {
                 self.recipes = recipes
                 self.performSegue(withIdentifier: "segueToRecipesList", sender: self)
             }
         }
     }
+    
+    @IBAction func unwindToFoodList(segue:UIStoryboardSegue) { }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueToRecipesList" {
@@ -61,7 +71,7 @@ class FoodViewController: UIViewController {
     }
 }
 
-extension FoodViewController: UITableViewDataSource {
+extension FoodViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return foodService.foodArray.count
     }
@@ -73,7 +83,23 @@ extension FoodViewController: UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let label = UILabel()
+        if foodService.foodArray.isEmpty {
+          
+            label.text = "Add foods in list"
+            label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+            label.textAlignment = .center
+            label.textColor = .darkGray
+            //return label
+        }
+        return label
+    }
+    
+
+    
 }
+
 
 
 
