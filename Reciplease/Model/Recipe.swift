@@ -25,5 +25,16 @@ class Recipe: NSManagedObject {
        // Recipe.fetchAll(viewContext: viewContext).forEach({ viewContext.delete($0) })
         try? viewContext.save()
     }
+    
+    static func isRegistered(name: String, viewContext: NSManagedObjectContext = AppDelegate.viewContext)-> Bool {
+        let request: NSFetchRequest<Recipe> = Recipe.fetchRequest()
+        request.predicate = NSPredicate(format: "name = %@", name)
+        guard let recipeList = try? viewContext.fetch(request) else {return false}
+        if recipeList.isEmpty {
+            return false
+        }
+        return true
+        
+    }
 }
 
