@@ -10,6 +10,8 @@ import UIKit
 
 class RecipeTableViewCell: UITableViewCell {
     
+    //MARK: - Outlets / propreties
+    
    @IBOutlet weak var recipeImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -20,8 +22,11 @@ class RecipeTableViewCell: UITableViewCell {
     
     
     
-    var match: Match! {
+    // propreties (get set) to put informations in corrects Outlets (call for recipesList)
+    var match: Match? {
+        
         didSet{
+            guard let match = self.match else {return}
             titleLabel.text = match.recipeName
             descriptionLabel.text = match.ingredients.joined(separator: ", ")
             let duration = match.totalTimeInSeconds / 60
@@ -38,8 +43,10 @@ class RecipeTableViewCell: UITableViewCell {
         }
     }
     
-    var recipe: Recipe! {
+     // propreties (get set) to put informations in corrects Outlets (call for favoritesList)
+    var recipe: Recipe? {
         didSet{
+            guard let recipe = recipe else {return}
             titleLabel.text = recipe.name
             let ingredientEntities = recipe.ingredients?.allObjects as? [Ingredient]
             let ingredients = ingredientEntities?.map({$0.name ?? ""}).joined(separator: ", ") ?? ""
@@ -51,7 +58,7 @@ class RecipeTableViewCell: UITableViewCell {
             
             
             durationLabel.text = "Duration : " + String(totaltimeInt / 60) + " min"
-            ratingLabel.text = "Rate : " + rate
+            ratingLabel.text = "Rate : " + rate + " / 5"
             guard let image = recipe.image else {
                 recipeImageView.image = UIImage(named: "defaultImage")
                 return}
