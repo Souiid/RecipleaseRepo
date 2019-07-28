@@ -9,6 +9,7 @@
         <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="ingredientLines" inverseEntity="Recipe" syncable="YES"/>
     </entity>
     <entity name="Recipe" representedClassName=".Recipe" syncable="YES" codeGenerationType="category">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rate" optional="YES" attributeType="String" syncable="YES"/>
@@ -20,6 +21,6 @@
     <elements>
         <element name="Ingredient" positionX="5008.9375" positionY="-1820.27734375" width="128" height="73"/>
         <element name="IngredientLine" positionX="4909.10546875" positionY="-1941.5625" width="128" height="73"/>
-        <element name="Recipe" positionX="4682.80859375" positionY="-1887.84375" width="128" height="148"/>
+        <element name="Recipe" positionX="4682.80859375" positionY="-1887.84375" width="128" height="165"/>
     </elements>
 </model>
