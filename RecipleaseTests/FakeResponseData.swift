@@ -10,27 +10,42 @@ import Foundation
 
 class FakeResponseData {
 
+    //Correct recipe data in jsonFile
     static var recipeCorrectData: Data? {
         let bundle = Bundle(for: FakeResponseData.self)
-        let url = bundle.url(forResource: "Recipe", withExtension: "json")!
-        return try! Data(contentsOf: url)
+        guard let url = bundle.url(forResource: "Recipe", withExtension: "json") else {return nil}
+        return try? Data(contentsOf: url)
     }
     
+    //Correct recipeDescription data in jsonFile
     static var recipeDescriptionCorrectData: Data? {
         let bundle = Bundle(for: FakeResponseData.self)
-        let url = bundle.url(forResource: "Description", withExtension: "json")!
-        return try! Data(contentsOf: url)
+        guard let url = bundle.url(forResource: "Description", withExtension: "json") else {return nil}
+        return try? Data(contentsOf: url)
     }
     
-    static let recipeIncorrectData = "erreur".data(using: .utf8)!
+    //Incorrect data
+    static let recipeIncorrectData = "erreur".data(using: .utf8)
     
-    static let responseOK = HTTPURLResponse(
-        url: URL(string: "https://test.com")!,
-        statusCode: 200, httpVersion: nil, headerFields: [:])!
+    // Response correct and incorrect
+    static var responseOK: HTTPURLResponse? {
+        guard let url = URL(string: "https://test.com") else {return nil}
+         let responseOK = HTTPURLResponse(
+            url: url,
+            statusCode: 200, httpVersion: nil, headerFields: [:])
+        return responseOK
+    }
+
     
-    static let responseKO = HTTPURLResponse(
-        url: URL(string: "https://test.com")!,
-        statusCode: 500, httpVersion: nil, headerFields: [:])!
+    static var responseKO: HTTPURLResponse? {
+        guard let url = URL(string: "https://test.com") else {return nil}
+        let responseOK = HTTPURLResponse(
+            url: url,
+            statusCode: 500, httpVersion: nil, headerFields: [:])
+        return responseOK
+    }
+    
+
     
     
     // MARK: - Error

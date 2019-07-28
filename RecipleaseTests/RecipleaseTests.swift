@@ -7,9 +7,13 @@
 //
 
 import XCTest
+import CoreData
 @testable import Reciplease
 
+
 class RecipleaseTests: XCTestCase {
+    
+    // MARK: - FoodService
 
     func testFoodServiceAddMethodShouldPostNilIfNoElement() {
         let foodService = FoodService()
@@ -34,7 +38,8 @@ class RecipleaseTests: XCTestCase {
     }
     
     
-    
+    // MARK: - YummlyService
+    // MARK: - GetRecipes
     
     
     func testGetRecipesShouldPostFailedCallback() {
@@ -129,6 +134,8 @@ class RecipleaseTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
+    //MARK: - getRecipeDescription
+    
     func testGetRecipeDescriptionShouldPostFailedCallback() {
         let fakeResponse = FakeResponse(response: nil, data: nil, error: FakeResponseData.error)
         let yummlySessionFake = YummlySessionFake(fakeResponse: fakeResponse)
@@ -219,6 +226,81 @@ class RecipleaseTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 0.01)
     }
+    
+    //MARK: - CoreData
+    //MARK: - Properties
+    lazy var mockContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "Reciplease")
+        container.persistentStoreDescriptions[0].url = URL(fileURLWithPath: "/dev/null")
+        container.loadPersistentStores(completionHandler: { (description, error) in
+            XCTAssertNil(error)
+        })
+        return container
+    }()
+        //MARK: - CoreData(Recipe)
+        //MARK: - Helper Method
+    private func addRecipeToFavorite(into managedObjectContext: NSManagedObjectContext) {
+        let newRecipe = Recipe(context: managedObjectContext)
+        newRecipe.name = "Flat Belly & Weight Loss Detox Water"
+    }
+        
+        //MARK: - Unit Tests
+    //Save a recipe
+    func testInsertManyRecipesInPersistentContainer() {
+        for _ in 0 ..< 1000 {
+            addRecipeToFavorite(into: mockContainer.newBackgroundContext())
+        }
+        XCTAssertNoThrow(try mockContainer.newBackgroundContext().save())
+    }
+    //Recipe.deleteRecipe
+    func testDeleteRecipeInPersistentContainer() {
+        let recipe = Recipe(context: mockContainer.viewContext)
+        recipe.name = "Flat Belly & Weight Loss Detox Water"
+        try? mockContainer.viewContext.save()
+        Recipe.deleteRecipe(recipe: recipe, viewContext: mockContainer.viewContext)
+        XCTAssertEqual(Recipe.fetchAll(viewContext: mockContainer.viewContext), [])
+    }
+    
+    //Recipe.isRegistered
+    func testIsRegisteredInPersistentContainer() {
+        let recipe = Recipe(context: mockContainer.viewContext)
+        recipe.id = "Flat-Belly-_-Weight-Loss-Detox-Water-2658056"
+        try? mockContainer.viewContext.save()
+        XCTAssertTrue(Recipe.isRegistered(id: "Flat-Belly-_-Weight-Loss-Detox-Water-2658056", viewContext: mockContainer.viewContext))
+        
+    }
+    
+    func testIsRegisteredShouldReturnFalseIfNotRecipeInPersistentContainer() {
+        let recipe = Recipe(context: mockContainer.viewContext)
+        recipe.id = "A false id"
+        try? mockContainer.viewContext.save()
+        XCTAssertFalse(Recipe.isRegistered(id: "Flat-Belly-_-Weight-Loss-Detox-Water-2658056", viewContext: mockContainer.viewContext))
+        
+    }
+    
+    //Recipe.search
+    func testSearchMethodReturnEmptyArrayIfNotCorrespondantNameInPersistentContainer() {
+        let recipe = Recipe(context: mockContainer.viewContext)
+        recipe.name = "Flat Belly & Weight Loss Detox Water"
+        try? mockContainer.viewContext.save()
+        let name = "erreur"
+        let arrayOfRecipe = Recipe.search(name: name)
+        XCTAssertTrue(arrayOfRecipe.isEmpty)
+    }
+    
+    func testSearchMethodReturnARecipeIfCorrespondantNameInPersistentContainer() {
+        let recipe = Recipe(context: mockContainer.viewContext)
+        recipe.name = "Flat Belly & Weight Loss Detox Water"
+        try? mockContainer.viewContext.save()
+        let name = "Flat"
+        let arrayOfRecipe = Recipe.search(name: name)
+        XCTAssertFalse(arrayOfRecipe.isEmpty)
+    }
+    
+    
+    
+    
+    
     
     
 }

@@ -19,14 +19,15 @@ class YummlySessionFake: YummlySession {
         super.init()
     }
     
-    
+    //request with different parameters from fakeResponse, request returns directly the completionHandler
     override func request(url: URL, completionHandler: @escaping (DataResponse<Any>) -> Void) {
         let httpResponse = fakeResponse.response
         let data = fakeResponse.data
         let error = fakeResponse.error
         
         let result = Request.serializeResponseJSON(options: .allowFragments, response: httpResponse, data: data, error: error)
-        let urlRequest = URLRequest(url: URL(string: urlStringApi)!)
+        guard let url = URL(string: urlStringApi) else {return}
+        let urlRequest = URLRequest(url: url)
         completionHandler(DataResponse(request: urlRequest, response: httpResponse, data: data, result: result))
     }
     
