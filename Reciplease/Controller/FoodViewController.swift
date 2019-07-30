@@ -100,8 +100,7 @@ class FoodViewController: UIViewController {
     
 }
 
-// All tableview methods 
-extension FoodViewController: UITableViewDataSource, UITableViewDelegate {
+extension FoodViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return foodService.foodArray.count
     }
@@ -116,7 +115,7 @@ extension FoodViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let label = UILabel()
         if foodService.foodArray.isEmpty {
-          
+            
             label.text = "Add foods in list"
             label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
             label.textAlignment = .center
@@ -129,11 +128,4 @@ extension FoodViewController: UITableViewDataSource, UITableViewDelegate {
         }
         return label
     }
-    
-
-    
 }
-
-
-
-
