@@ -11,6 +11,13 @@ import CoreData
 
 class Ingredient: NSManagedObject {
   
+    static func createIngredient(recipeEntitie: Recipe, ingredientsName: [String],viewContext: NSManagedObjectContext = AppDelegate.viewContext) {
+        for name in ingredientsName {
+            let ingredientEntitie = Ingredient(context: viewContext)
+            ingredientEntitie.name = name
+            ingredientEntitie.recipe = recipeEntitie
+        }
+    }
 }
 
 
