@@ -77,10 +77,6 @@ class FoodViewController: UIViewController {
             
             }
         }
-        
-//        activityIndicator.isHidden = true
-//        searchButton.isHidden = false
-//        activityIndicator.stopAnimating()
     }
     
     //To come back in this view controller from RecipeDescription
