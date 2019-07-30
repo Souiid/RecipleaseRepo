@@ -11,4 +11,11 @@ import CoreData
 
 class IngredientLine: NSManagedObject {
    
+    static func createIngredientLine(ingredientLines: [String], recipeEntitie: Recipe, viewContext: NSManagedObjectContext = AppDelegate.viewContext) {
+        for ingredientLine in ingredientLines {
+            let ingredientLineEntity = IngredientLine(context: viewContext)
+            ingredientLineEntity.ingredient = ingredientLine
+            ingredientLineEntity.recipe = recipeEntitie
+        }
+    }
 }
