@@ -55,10 +55,17 @@ class Recipe: NSManagedObject {
         try? viewContext.save()
     }
     
-//    func createRecipe(viewContext: NSManagedObjectContext = AppDelegate.viewContext)-> Recipe{
-//        let recipe = Recipe(context: viewContext)
-//        return recipe
-//        
-//    }
+    static func createRecipe(name: String, rate: Int, totalTime: Int, url: String, id: String, source: String, viewContext: NSManagedObjectContext = AppDelegate.viewContext)-> Recipe{
+        let recipe = Recipe(context: viewContext)
+        recipe.name = name
+        recipe.rate = String(rate)
+        recipe.totalTime = String(totalTime)
+        let stringURL = url
+        recipe.image = stringURL.data
+        recipe.id = id
+        recipe.source = source
+        return recipe
+        
+    }
 }
 
