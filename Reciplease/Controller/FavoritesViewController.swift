@@ -32,6 +32,7 @@ class FavoritesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         recipes = Recipe.fetchAll()
+        ifShowRecipe = false
         favoritesTableView.reloadData()
         favoritesTableView.isHidden = false
         self.activityIndicator.isHidden = true
@@ -46,19 +47,16 @@ class FavoritesViewController: UIViewController {
             
             if let recipeDescriptionVC = segue.destination as? RecipeDescriptionViewController {
                 recipeDescriptionVC.favoris = true
-                recipeDescriptionVC.recipeFav = recipes[index]
+                if !ifShowRecipe {
+                    recipeDescriptionVC.recipeFav = recipes[index]
+                }else {
+                    recipeDescriptionVC.recipeFav = arrayOfRecipe[index]
+                }
             }
         }
     }
-//    override func reloadInputViews() {
-//        super.reloadInputViews()
-//        if !arrayOfRecipe.isEmpty {
-//            ifShowRecipe = true
-//            searchBar.text = ""
-//            addButton.titleLabel?.text = "Cancel"
-//        }
-//    }
-    
+
+    //Search a recipe
     @IBAction func search() {
      
         guard let textToSearch = searchBar.text else {return}
@@ -77,19 +75,23 @@ class FavoritesViewController: UIViewController {
         
         favoritesTableView.reloadData()
     }
+    
+    @IBAction func dimissKeyboard(_ sender: UITapGestureRecognizer) {
+        searchBar.resignFirstResponder()
+    }
+    
 }
 
-// All tableview methods 
 extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if ifShowRecipe == false{
             return recipes.count
         }else{
             return arrayOfRecipe.count
-       
+            
         }
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = favoritesTableView.dequeueReusableCell(withIdentifier: "RecipeTableViewCell", for: indexPath) as? RecipeTableViewCell else {return UITableViewCell()}
         if ifShowRecipe == false{
@@ -97,7 +99,7 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
             let recipe = recipes[indexPath.row]
             cell.recipe = recipe
             return cell
-        
+            
         }else{
             let recipe = arrayOfRecipe[indexPath.row]
             cell.recipe = recipe
@@ -115,8 +117,8 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let label = UILabel()
-       
-       if recipes.isEmpty {
+        
+        if recipes.isEmpty {
             label.text = "You have'nt recipe in favorites : Search a recipe / Select a recipe / Press on the star"
             label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
             label.textAlignment = .center
