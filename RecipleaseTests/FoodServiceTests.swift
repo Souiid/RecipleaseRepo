@@ -7,27 +7,30 @@
 //
 
 import XCTest
+@testable import Reciplease
 
 class FoodServiceTests: XCTestCase {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testFoodServiceAddMethodShouldPostNilIfNoElement() {
+        let foodService = FoodService()
+        XCTAssertTrue(foodService.foodArray.isEmpty)
     }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func testFoodServiceAddMethodShouldPostTrueIfHaveElement() {
+        let foodService = FoodService()
+        let aFood = Food(name: "lemon")
+        foodService.add(food: aFood)
+        XCTAssertFalse(foodService.foodArray.isEmpty)
     }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testFoodServiceDeleteAllMethodShouldPostTrueIfHaveElement() {
+        let foodService = FoodService()
+        let aFood = Food(name: "lemon")
+        let aFood2 = Food(name: "sausage")
+        foodService.add(food: aFood)
+        foodService.add(food: aFood2)
+        foodService.deleteAll()
+        XCTAssertTrue(foodService.foodArray.isEmpty)
     }
 
 }

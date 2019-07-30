@@ -7,27 +7,29 @@
 //
 
 import XCTest
-
+@testable import Reciplease
+import CoreData
 class IngredientTests: XCTestCase {
+    
+    lazy var mockContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "Reciplease")
+        container.persistentStoreDescriptions[0].url = URL(fileURLWithPath: "/dev/null")
+        container.loadPersistentStores(completionHandler: { (description, error) in
+            XCTAssertNil(error)
+        })
+        return container
+    }()
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testCreateIngredientEntitiesShouldBeInViewContext() {
+        let recipe = Recipe(context: mockContainer.viewContext)
+        Ingredient.createIngredient(recipeEntitie: recipe, ingredientsName: ["chocolate"], viewContext: mockContainer.viewContext)
+        try? mockContainer.viewContext.save()
+        let request: NSFetchRequest<Ingredient> = Ingredient.fetchRequest()
+        guard let ingredientList = try? mockContainer.viewContext.fetch(request) else {return }
+        print("IngredientLine: ", ingredientList)
+        XCTAssertEqual(ingredientList.count, 1)
+        XCTAssertEqual(ingredientList.first?.name, "chocolate")
+        
     }
 
 }
