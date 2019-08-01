@@ -88,8 +88,8 @@
                                 <color key="backgroundColor" red="0.73619878289999996" green="0.83996206520000005" blue="0.8930396438" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="8rI-YH-KfD" id="ler-aB-ygR"/>
-                                    <outlet property="delegate" destination="8rI-YH-KfD" id="GRe-0Z-u0m"/>
+                                    <outlet property="dataSource" destination="8rI-YH-KfD" id="zJp-Ok-qqp"/>
+                                    <outlet property="delegate" destination="8rI-YH-KfD" id="3Gh-vA-FvZ"/>
                                 </connections>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="SZ9-IG-6jb">
@@ -99,6 +99,9 @@
                                 <rect key="frame" x="29" y="109" width="282" height="56"/>
                                 <color key="barTintColor" red="0.73619878289999996" green="0.83996206520000005" blue="0.8930396438" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="8rI-YH-KfD" id="yeg-t7-G7A"/>
+                                </connections>
                             </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1aG-Cq-ij1">
                                 <rect key="frame" x="347" y="122" width="48" height="30"/>
@@ -112,6 +115,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.73619878289999996" green="0.83996206520000005" blue="0.8930396438" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="SZ9-IG-6jb" firstAttribute="centerY" secondItem="Q6M-WE-tbV" secondAttribute="centerY" id="2E7-1I-pxa"/>
                             <constraint firstItem="1vh-ml-jsv" firstAttribute="leading" secondItem="s2n-rt-bBs" secondAttribute="leading" id="AAh-hV-As5"/>

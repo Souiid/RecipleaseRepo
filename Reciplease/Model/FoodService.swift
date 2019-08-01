@@ -17,5 +17,6 @@ class FoodService {
     
     func deleteAll() {
         foodArray.removeAll()
+        
     }
 }

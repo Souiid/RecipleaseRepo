@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FavoritesViewController: UIViewController {
+class FavoritesViewController: UIViewController, UISearchBarDelegate {
     
     //MARK: - Outlets / propreties / viewDidLoad
     var recipes = Recipe.fetchAll()
@@ -25,6 +25,8 @@ class FavoritesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         favoritesTableView.register(UINib.init(nibName: "RecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeTableViewCell")
+        favoritesTableView.reloadData()
+        favoritesTableView.sectionFooterHeight = 100
         
      }
     
@@ -58,7 +60,10 @@ class FavoritesViewController: UIViewController {
 
     //Search a recipe
     @IBAction func search() {
-     
+        searchRecipeInFavorites()
+    }
+    
+    func searchRecipeInFavorites() {
         guard let textToSearch = searchBar.text else {return}
         arrayOfRecipe = Recipe.search(name: textToSearch)
         searchBar.text = ""
@@ -75,13 +80,13 @@ class FavoritesViewController: UIViewController {
         
         favoritesTableView.reloadData()
     }
-    
-    @IBAction func dimissKeyboard(_ sender: UITapGestureRecognizer) {
+  
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+        searchRecipeInFavorites()
     }
     
 }
-
 extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if ifShowRecipe == false{
@@ -107,6 +112,7 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         favoritesTableView.isHidden = true
         self.activityIndicator.isHidden = false
@@ -119,16 +125,16 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
         let label = UILabel()
         
         if recipes.isEmpty {
-            label.text = "You have'nt recipe in favorites : Search a recipe / Select a recipe / Press on the star"
+            label.text = "You have'nt recipe in favorites :\n - Search a recipe\n - Select a recipe\n - Press on the star"
             label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
             label.textAlignment = .center
             label.textColor = .darkGray
-            label.numberOfLines = 0
-            
-            //textView.sizeThatFits(CGSize(width: 100, height: 100))
+            label.numberOfLines = 4
+        
             return label
             
         }
         return label
     }
 }
+

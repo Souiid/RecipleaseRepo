@@ -57,8 +57,6 @@ class RecipesViewController: UIViewController {
         }
     }
 }
-
- //All tableview methods
 extension RecipesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -67,7 +65,7 @@ extension RecipesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = recipesTableView.dequeueReusableCell(withIdentifier: "RecipeTableViewCell", for: indexPath) as? RecipeTableViewCell else {return UITableViewCell()}
-       
+        
         let recipe = recipes[indexPath.row]
         cell.match = recipe
         
@@ -97,7 +95,7 @@ extension RecipesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let label = UILabel()
         if recipes.isEmpty {
-        
+            
             label.text = "The search not success"
             label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
             label.textAlignment = .center
@@ -106,5 +104,7 @@ extension RecipesViewController: UITableViewDataSource, UITableViewDelegate {
         return label
     }
 }
+
+
 
 
