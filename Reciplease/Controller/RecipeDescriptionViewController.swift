@@ -132,9 +132,8 @@ class RecipeDescriptionViewController: UIViewController {
     //MARK: - Actions
     // Go on Safari to find recipe's details on the website
     @IBAction func getDirection() {
-        guard let recipeDescription = recipeDescription else {return}
-       // guard let recipeFav = recipeFav else {return}
         if !favoris {
+            guard let recipeDescription = recipeDescription else {return}
             getRecipeDetailsOnSafari(with: recipeDescription.source.sourceRecipeURL)
         }else {
             guard let recipeFav = recipeFav else {return}
